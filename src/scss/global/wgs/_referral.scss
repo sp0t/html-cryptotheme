@@ -1,0 +1,92 @@
+// Referral WG
+//////////////////////////////
+.nk-refwg {
+    display: flex;
+    flex-wrap: wrap;
+    &-invite,&-stats{
+        width: 100%;
+    }
+    &-head{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-bottom: 1.5rem;
+    }
+    &-group{
+        position: relative;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        @if($rtl==false){
+            padding-right: 30px;
+        }
+        @if($rtl==true){
+            padding-left: 30px;
+        }
+    }
+    &-name{
+        .title{
+            font-size: $fx-sz-13;
+            color: $accent-color;
+            .icon{
+                color: $base-light;
+                font-size: 0.75rem;
+                @if($rtl==false){
+                    margin-left: 0.125rem;
+                }
+                @if($rtl==true){
+                    margin-right: 0.125rem;
+                }
+            }
+        }
+    }
+    &-info{
+        flex-grow: 1;
+        text-align: center;
+        display: flex;
+        justify-content: space-around;
+        .title{
+            font-size: 1.125rem;
+            font-weight: $fw-medium;
+        }
+    }
+    &-more{
+        position: absolute;
+        @if($rtl==false){
+            right: -4px;
+        }
+        @if($rtl==true){
+            left: -4px;
+        }
+        top: -2px;
+    }
+    &-invite{
+        .nk-refwg & {
+            border-bottom: 1px solid $border-color;
+        }
+    }
+    &-ck{
+        height: 50px;
+        margin-top: 0.75rem;
+    }
+}
+@include media-breakpoint-up(md){
+    .nk-refwg {
+        .nk-refwg {
+            &-invite{
+                width: 55%;
+                border-bottom: none;
+                @if($rtl==false){
+                    border-right: 1px solid $border-color;
+                }
+                @if($rtl==true){
+                    border-left: 1px solid $border-color;
+                }
+            }
+            &-stats{
+                width: 45%;
+            }
+        }
+    }
+}

@@ -1,0 +1,143 @@
+// Wallet
+////////////////
+.wallet{
+    &-item{
+        a{
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 0;
+            z-index: 1;
+            &:before,&:after{
+                position: absolute;
+                opacity: 0;
+                transition: opacity .3s;
+            }
+            &:after{
+                font-family: $nk-dashlite-font;
+                transform: translateY(-50%);
+                @if($rtl==false){
+                    content:$ni-chevron-right;
+                    right: - .25rem;
+                }
+                @if($rtl==true){
+                    content:$ni-chevron-left;
+                    left: - .25rem;
+                }
+                top: 50%;
+                color: $light-300;
+                font-size: 1.25rem;
+            }
+            &:before{
+                content: '';
+                top: 0;
+                bottom: 0;
+                left: - $sidebar-gap-x;
+                right: - $sidebar-gap-x;
+                background-color: $white;
+                border-radius: 100px;
+                z-index: -1;
+                @if($dark_option==true) {
+                    .is-dark &{
+                        background-color: darken($darker,3%);
+                    }
+                }
+                @if($dark_theme_option==true) {
+                    .is-theme &{
+                        background-color: darken($accent-dark,10%);
+                    }
+                }
+            }
+            &:hover{
+                &:before,&:after{
+                    opacity: 1;
+                }
+            }
+        }
+        &-add{
+            a{
+                &:after{
+                    display: none;
+                }
+                &:hover{
+                    .wallet-icon,.wallet-name{
+                        color: $accent-color;
+                        @if($dark_option==true or $dark_theme_option==true) {
+                            .is-dark &, .is-theme &{
+                                color: $white;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &-icon{
+        width: 40px;
+        color: $base-light;
+        flex-shrink: 0;
+        display: inline-flex;
+        .icon{
+            font-size: 24px;
+        }
+        img{
+            width: 24px;
+        }
+        @if($dark_theme_option==true) {
+            .is-theme &{
+                color: $accent-light;
+            }
+        }
+    }
+    &-text{
+        display: inline-flex;
+        flex-direction: column;
+    }
+    &-name{
+        font-size: $fx-sz-14;
+        font-weight: 700;
+        color: $base-text;
+        margin-bottom: .25rem;
+        @if($dark_option==true) {
+            .is-dark &{
+                color: $base-light;
+            }
+        }
+        @if($dark_theme_option==true) {
+            .is-theme &{
+                color: $accent-light;
+            }
+        }
+    }
+    &-balance{
+        font-size: $fx-sz-13;
+        color: $base-color;
+        line-height: 1;
+        margin-top: 0.25rem;
+        span{
+            color: $base-light;
+        }
+        @if($dark_option==true) {
+            .is-dark &{
+                color: $white;
+                span{
+                    color: $base-light;
+                }
+            }
+        }
+        @if($dark_theme_option==true) {
+            .is-theme &{
+                color: $white;
+                span{
+                    color: $accent-light;
+                }
+            }
+        }
+            
+    }
+}
+@include media-breakpoint-down(lg){
+    .nk-sidebar .wallet-item a:before{
+        display: none;
+    }
+}

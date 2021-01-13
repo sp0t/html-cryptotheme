@@ -1,0 +1,185 @@
+.tranx {
+    &-list{
+        font-size: 0.8125rem;
+    }
+    &-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.25rem;
+        &:not(:last-child){
+            border-bottom: 1px solid $border-color;
+        }
+    }
+    &-col{
+        display: inline-flex;
+        flex-direction: column;
+    }
+    &-info {
+        display: inline-flex;
+        align-items: center;
+    }
+    &-badge {
+        flex-shrink: 0;
+        + .tranx-data{
+            @if($rtl==false){
+                margin-left: 10px;
+            }
+            @if($rtl==true){
+                margin-right: 10px;
+            }
+        }
+    }
+    &-icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 36px;
+        width: 36px;
+        font-size: 20px;
+        border-radius: 50%;
+        &.sm{
+            height: 20px;
+            width: 20px;
+            font-size: 14px;
+        }
+        &[class*="btc"]{
+            color: $brand-color-bitcoin;
+            background: rgba($brand-color-bitcoin,.2);
+        }
+        &[class*="eth"]{
+            color: $brand-color-ethereum;
+            background: rgba($brand-color-ethereum,.2);
+        }
+        .status-success & {
+            color: $success;
+            background-color: rgba($success,.15);
+        }
+    }
+    &-data{
+        flex-grow: 1;
+    }
+    &-label{
+        font-size: 0.9375em;
+        font-weight: 500;
+        color: $base-color;
+        margin-bottom: 0.25rem;
+        display: inline-flex;
+        align-items: center;
+        .tranx-icon{
+            @if($rtl==false){
+                margin-left: 0.5rem;
+            }
+            @if($rtl==true){
+                margin-right: 0.5rem;
+            }
+        }
+    }
+    &-date{
+        font-size: $fx-sz-11;
+        color: $base-light;
+    }
+    &-amount{
+        @if($rtl==false){
+            text-align: right;
+        }
+        @if($rtl==true){
+            text-align: left;
+        }
+        .number{
+            font-size: 1.125em;
+            color: $base-color;
+            font-weight: 500;
+            span{
+                color: $base-text;
+                font-weight: 400;
+            }
+            &-sm{
+                font-size: $fx-sz-11;
+                color: $base-text;
+                span{
+                    color: $base-light;
+                }
+            }
+        }
+    }
+}
+
+@include media-breakpoint-down(xs){
+	.tranx-list.is-stretch{
+	    margin-left: - $card-stretch-gap-x;
+	    margin-right: - $card-stretch-gap-x;
+	    border-left: 0;
+	    border-right: 0;
+	    border-radius: 0;
+	}
+}
+
+@include media-breakpoint-up(sm){
+    .tranx{
+        &-item{
+            padding: 1.25rem 1.5rem;
+        }
+        &-list{
+            font-size: 1rem;
+        }
+        &-badge + .tranx-data{
+            @if($rtl==false){
+                margin-left: 16px;
+            }
+            @if($rtl==true){
+                margin-right: 16px;
+            }
+        }
+        &-icon{
+            height: 44px;
+            width: 44px;
+            font-size: 24px;
+            &.sm{
+                height: 24px;
+                width: 24px;
+                font-size: 16px;
+            }
+        }
+        &-date{
+            font-size: $fx-sz-12;
+        }
+        &-amount{
+            .number-sm{
+                font-size: $fx-sz-12;
+            }
+        }
+    }
+}
+
+// Compact view
+//////////////////////////
+.is-compact{
+    .tranx{
+        &-item{
+            padding-top: .75rem;
+            padding-bottom: .75rem;
+        }
+        &-label{
+            margin-bottom: 0;
+        }
+        &-badge + .tranx-data{
+            @if($rtl==false){
+                margin-left: 16px;
+            }
+            @if($rtl==true){
+                margin-right: 16px;
+            }
+        }
+        &-icon{
+            height: 36px;
+            width: 36px;
+            font-size: 20px;
+        }
+        &-amount{
+            .number{
+                font-size: 1rem;
+            }
+        }
+    }
+}

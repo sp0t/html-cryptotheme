@@ -1,0 +1,180 @@
+// BuySell Module
+/////////////////////
+.buysell{
+    &-title{
+        margin-bottom: 1.5rem;
+        .title{
+            font-weight: $fw-normal;
+        }
+    }
+    &-nav{
+        margin-bottom: 2rem;
+    }
+    &-cc{
+        &-dropdown{
+            width: 100%;
+            .dropdown-indicator{
+                &:after{
+                    position: absolute;
+                    top: 0;
+                    @if($rtl==false){
+                        right: 0;
+                    }
+                    @if($rtl==true){
+                        left: 0;
+                    }
+                    bottom: 0;
+                    width: 56px;
+                    font-size: 24px;
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: $base-light;
+                    opacity: 0.5;
+                }
+            }
+            .dropdown-menu{
+                top: -78px !important;
+            }
+        }
+        &-item{
+            &:not(:last-child){
+                border-bottom: 1px solid $border-light;
+            }
+        }
+        &-choosen{
+            display: block;
+            width: 100%;
+            border: 1px solid $border-color;
+            border-radius: $border-radius;
+            background: $white;
+        }
+        &-opt{
+            display: block;
+        }
+    }
+    &-pm{
+        &-list{
+            border: 1px solid $border-color;
+            background: $white;
+            border-radius: $border-radius;
+        }
+        &-item{
+            position: relative;
+            &:not(:last-child){
+                border-bottom: 1px solid $border-light;
+            }
+        }
+        &-label{
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 0;
+            @if($rtl==false){
+                padding: 16px 20px 16px 60px;
+            }
+            @if($rtl==true){
+                padding: 16px 60px 16px 20px;
+            }
+            cursor: pointer;
+            &:before,&:after{
+                position: absolute;
+                top: 50%;
+                @if($rtl==false){
+                    left: 20px;
+                }
+                @if($rtl==true){
+                    right: 20px;
+                }
+                transform: translateY(-50%);
+                height: 24px;
+                width: 24px;
+                border-radius: 50%;
+            }
+            &:before{
+                content: '';
+                border: 2px solid $border-color;
+            }
+            &:after{
+                font-family: $nk-dashlite-font;
+                content: $ni-check;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                color: $white;
+                background: $accent-color;
+                transition: opacity .3s;
+                opacity: 0;
+            }
+            .pm{
+                &-name{
+                    font-size: $fx-sz-14;
+                    color: $base-color;
+                }
+                &-icon{
+                    display: inline-flex;
+                    font-size: 24px;
+                    color: $base-light;
+                }
+            }
+        }
+        &-control{
+            position: absolute;
+            top: 0;
+            height: 1px;
+            width: 1px;
+            opacity: 0;
+            &:checked ~ {
+                .buysell-pm-label{
+                    cursor: default;
+                    &:after{
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+    }
+    &-overview{
+        padding: 1rem 0 1.5rem;
+        &-list{
+            border: 1px solid $border-color;
+            border-radius: $border-radius;
+            + .sub-text-sm{
+                margin-top: 0.5rem;
+            }
+        }
+        &-item{
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px;
+            &:not(:last-of-type){
+                border-bottom: 1px solid $border-light;
+            }
+            .pm-currency{
+                align-items: center;
+                display: flex;
+                .icon{
+                    font-size: 24px;
+                    @if($rtl==false){
+                        margin-right: 0.5rem;
+                    }
+                    @if($rtl==true){
+                        margin-left: 0.5rem;
+                    }
+                    color: $base-light;
+                }
+            }
+        }
+    }
+    &-field{
+        &:not(:last-child){
+            margin-bottom: 1.75rem;
+        }
+        &.form-action{
+            padding-top: .5rem;
+        }
+    }
+}

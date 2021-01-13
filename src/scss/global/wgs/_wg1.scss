@@ -1,0 +1,131 @@
+/// WG1
+//////////////////////
+
+.nk-wg1 {
+    .card-full & {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    &-block {
+        display: flex;
+        padding: 1.25rem;
+        align-items: flex-start; 
+        flex-direction: column;
+    }
+    &-img {
+        width: 84px;
+        @if($rtl==false){
+            margin-right: 0; 
+        }
+        @if($rtl==true){
+            margin-left: 0; 
+        }  
+        margin-bottom: 1.5rem; 
+        flex-shrink: 0;
+        text-align: center;
+        padding: .125rem;
+    }
+    &-text {
+        color: $base-light;
+    }
+    &-action{
+        margin-top: auto;
+        border-top: 1px solid $border-light;
+        .link {
+            position: relative;
+            display: block;
+            line-height: 1.3;
+            padding:1.25rem;
+            @if($rtl==false){
+                padding-right: (1.25rem + 1.25rem);
+            }
+            @if($rtl==true){
+                padding-left: (1.25rem + 1.25rem);
+            }
+            white-space: inherit;
+            &:hover {
+                background-color: $lighter;
+            }
+            .icon {
+                position: absolute;
+                @if($rtl==false){
+                    right: 1.25rem;
+                    margin-right: -.25rem;
+                }
+                @if($rtl==true){
+                    left: 1.25rem;
+                    margin-left: -.25rem;
+                }
+                margin-top: -1px;
+            }
+        }
+        .link-inline {
+            display: inline-block;
+            @if($rtl==false){
+                padding-right: .25rem;
+            }
+            @if($rtl==true){
+                padding-left: .25rem;
+            }
+            .icon {
+                position: static;
+                @if($rtl==false){
+                    padding-left: .25rem;
+                    margin-right: 0;
+                }
+                @if($rtl==true){
+                    padding-right: .25rem;
+                    margin-left: 0;
+                }
+            }
+        }
+    }
+}
+
+@include media-breakpoint-up(sm) {
+    .nk-wg1 {
+        &-block {
+            padding: 1.5rem;
+        }
+        &-action{
+            .link {
+                padding:1.5rem;
+                @if($rtl==false){
+                    padding-right: (1.5rem + 1.25rem);
+                }
+                @if($rtl==true){
+                    padding-left: (1.5rem + 1.25rem);
+                }
+                &-inline {
+                    @if($rtl==false){
+                        padding-right: .25rem;
+                    }
+                    @if($rtl==true){
+                        padding-left: .25rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include media-breakpoint-up(xl) {
+    .nk-wg1 {
+        &-img {
+            @if($rtl==false){
+                margin-right: 1.5rem;
+            }
+            @if($rtl==true){
+                margin-left: 1.5rem;
+            }
+            margin-bottom: 0;
+        }
+        &-block {
+            flex-direction: row;
+            align-items: center;
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }
+    }
+}
